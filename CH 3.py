@@ -40,12 +40,78 @@ print_this_many(print,3, 'TEST')
 cube_value = int(input())
 
 
+
 def print_cube(length):
+    count = 0
     if length%2==0:
-        print('TEST')
-    else:
         print('Enter an odd number')
         new_value = int(input())
         print_cube(new_value)
+
+    else:
+       
+        if count == 0:
+            
+            string = '+'
+            width = 1
+            while width < (length -1):
+
+                if width ==  math.ceil((length - 1)/ 2) :
+                    string = string + ' +'
+                    width += 1
+                else:
+                    string = string +' -'
+                    width += 1
+            string = string + " +"
+            print(string)
+            count += 1
+        
+            while count < (length -1):
+
+                if count ==  math.ceil((length - 1)/ 2):
+                    string = '+'
+                    width = 1
+                    while width < (length -1):
+
+                        if width ==  math.ceil((length - 1)/ 2) :
+                            string = string + ' +'
+                            width += 1
+                        else:
+                            string = string +' -'
+                            width += 1
+                    string = string + " +"
+                    print(string)
+                    count += 1
+                  
+                else:
+                    width = 1
+                    string = '|'
+                    while width < (length -1):
+                    
+                        if width ==  math.ceil((length - 1)/ 2) :
+                            string = string + ' |'
+                            width += 1
+                        else:
+                            string = string +'  '
+                            width += 1
+                    
+                    string = string + " |"
+                    print(string)
+                    
+                    count += 1
+
+            string = '+'
+            width = 1
+            while width < (length -1):
+
+                if width ==  math.ceil((length - 1)/ 2) :
+                    string = string + ' +'
+                    width += 1
+                else:
+                    string = string +' -'
+                    width += 1
+            string = string + " +"
+            print(string)
+            count += 1
 
 print_cube(cube_value)
