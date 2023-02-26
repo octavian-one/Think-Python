@@ -68,7 +68,7 @@ def arc(t, r, angle):
    
     polyline(t, n, step_length, step_angle)
 
-bob.speed(0)
+bob.speed(1)
 
 #arc(bob, 100, 9000)
 """ pretty interesting flower
@@ -90,12 +90,42 @@ def leaf(turtle, length, leaves):
         arc(turtle, length, 100)
 leaf(bob, 100, 5)"""
 
-"""def leaf(turtle, length, leaves):
+def leaf(turtle, leaves, r, angle):
     for i in range(leaves):
         #turtle.lt(360/leaves)
-        arc(turtle, length, 100)
-        turtle.rt(-270)
-        arc(turtle, length, 100)
-leaf(bob, 50, 4)
+        for i in range(2):
+            arc(turtle, r, angle)
+            turtle.lt(180-angle)
+        turtle.lt(360.0/leaves)
+
+#leaf(bob, 5, 200, 45)
+
+"""First version written for 6 slices
+def slice (turtle, length, angle):
+    polyline(turtle, 4, length, angle)
+
+def pie (turtle, slices):
+    for i in range(slices):
+        slice(bob, 50, 120)
+        bob.lt(300)
 """
+"""Cool
+def slice (turtle, length, angle):
+    polyline(turtle, 4, length, angle)
+
+def pie (turtle, slices):
+    for i in range(slices):
+        slice(bob, 100, (360/slices*2))
+        bob.lt(-(360/slices))
+"""
+
+def slice (turtle, length, angle):
+    polyline(turtle, 3, length, angle)
+
+def pie (turtle, slices):
+    for i in range(slices):
+        slice(bob, 100, (360/slices))
+        bob.lt(-(360/slices))
+
+pie(bob, 6)
 turtle.mainloop()
