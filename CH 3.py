@@ -35,83 +35,98 @@ def print_this_many(func, arg,value):
 
 print_this_many(print,3, 'TEST')
 
-# Print a cube up to 100 characters
+# Print a square up to 71 characters wide
+def print_square(length):
 
-cube_value = int(input())
+    # Set height to 0 (first line)
+    height = 0
+
+    # If the number given for the length is even then prompt for an odd number
 
 
+    if length.isnumeric() != True:
+        print('Enter a number')
+        print_square(input())
+        return
 
-def print_cube(length):
-    count = 0
+    length = int(length) 
     if length%2==0:
         print('Enter an odd number')
-        new_value = int(input())
-        print_cube(new_value)
+        print_square(input())
 
     else:
-       
-        if count == 0:
-            
+        # Anything greater than 71 will get ceiled to 71
+        if length > 71:
+            length = 71
+
+       # Identify middle of square function
+        def middle():
+            return math.ceil((length - 1)/ 2)
+        
+        # Draw the edge or middle line when called
+        def pointed_line():
+            # Draw first point
             string = '+'
             width = 1
+
+            # While still drawing
             while width < (length -1):
 
-                if width ==  math.ceil((length - 1)/ 2) :
-                    string = string + ' +'
+                # Check if the middle of the line was reached
+                if width == middle():
+                    string += ' +'
                     width += 1
+
+                # Continue to draw if the middle is not reached
                 else:
-                    string = string +' -'
+                    string += ' -'
                     width += 1
-            string = string + " +"
+
+            # Draw the final point in the line
+            string += " +"
             print(string)
-            count += 1
+
+        # If first line
+        if height == 0:
+            
+            # Draw edge
+            pointed_line()
+            height += 1
         
-            while count < (length -1):
+            # While height not complete
+            while height < (length -1):
 
-                if count ==  math.ceil((length - 1)/ 2):
-                    string = '+'
-                    width = 1
-                    while width < (length -1):
-
-                        if width ==  math.ceil((length - 1)/ 2) :
-                            string = string + ' +'
-                            width += 1
-                        else:
-                            string = string +' -'
-                            width += 1
-                    string = string + " +"
-                    print(string)
-                    count += 1
-                  
+                # Check if height is the middle and if so, draw 'edge line'
+                if height ==  middle():
+                    pointed_line()
+                    height += 1
+                
+                # Draw the non-edge line
                 else:
                     width = 1
                     string = '|'
+
                     while width < (length -1):
                     
-                        if width ==  math.ceil((length - 1)/ 2) :
-                            string = string + ' |'
+                        # Add middle line
+                        if width ==  middle() :
+                            string += ' |'
                             width += 1
+
+                        # Add spaces
                         else:
-                            string = string +'  '
+                            string +='  '
                             width += 1
                     
-                    string = string + " |"
+                    # Finish
+                    string += " |"
                     print(string)
                     
-                    count += 1
+                    height += 1
 
-            string = '+'
-            width = 1
-            while width < (length -1):
+            # After height is complete, draw the last edge
+            pointed_line()
+            height += 1
 
-                if width ==  math.ceil((length - 1)/ 2) :
-                    string = string + ' +'
-                    width += 1
-                else:
-                    string = string +' -'
-                    width += 1
-            string = string + " +"
-            print(string)
-            count += 1
-
-print_cube(cube_value)
+# Print a square with prompted input
+print_square(input())
